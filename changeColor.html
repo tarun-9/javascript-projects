@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    body{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image:linear-gradient(to right,rgb(42, 151, 230),rgb(245, 135, 226));
+    }
+
+    .btn{
+        border-radius: 12px;
+        border: none;
+        color: white;
+        padding: 5px 10px ;
+        margin: 15px;
+
+    }
+
+    #btn1{
+        background-color: #083555;   
+    }
+
+    #btn2{
+        background-color: #c265b2;
+    }
+
+    section{
+        /* border: 2px solid red; */
+        padding: 20px;
+        width: 60%;
+        text-align: center;
+    }
+
+    div{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    h3{
+        margin: 15px;
+        font-size: 15px;
+        color: rgb(223, 210, 210);
+    }
+
+    p{
+        background-color: rgb(255, 255, 255,0.2);
+        padding: 10px;
+        border-radius: 10px;
+        border-left: 5px solid white;
+        
+    }
+
+</style>
+
+<body>
+
+    <section>
+        <div>
+        <button class="btn" id="btn1" >#083555</button>
+        <button class="btn" id="btn2">#c265b2</button>
+    </div>
+    <h3>COPY YOUR CODE FROM HERE</h3>
+    <p class="output">background-image:linear-gradient(to right,rgb(126, 188, 232),rgb(245, 135, 226))</p>
+    </section>
+    
+    <script>
+
+        let btn1=document.querySelector("#btn1");
+        let btn2=document.querySelector("#btn2");
+        let output=document.querySelector(".output")
+        let rgb1= "rgb(42, 151, 230)";
+        let rgb2= "rgb(245, 135, 226)";
+
+        let hexColor=()=>{
+           let color="#";
+           let hexValues="0123456789abcdef";
+
+            for(let i=1;i<=6;i++){
+            color=color + hexValues[Math.floor(Math.random()*16)]
+
+           }
+           return color;
+        }
+
+        let handleClick=()=>{
+             rgb1=hexColor();
+            btn1.innerHTML=rgb1;
+            output.innerHTML= ` background-image:linear-gradient(to right,${rgb1},${rgb2})`
+            document.body.style.backgroundImage = `linear-gradient(to right,${rgb1},${rgb2})`;
+        }
+
+        let handleClick1=()=>{
+             rgb2=hexColor();
+            btn2.innerHTML=rgb2;
+            output.innerHTML= ` background-image:linear-gradient(to right,${rgb1},${rgb2})`
+            document.body.style.backgroundImage = `linear-gradient(to right,${rgb1},${rgb2})`;
+            
+        }
+
+        btn1.addEventListener("click",handleClick)
+        btn2.addEventListener("click",handleClick1)
+        output.addEventListener("click",()=>{
+          navigator.clipboard.writeText(output.innerText)
+          alert("copied")
+        })
+
+    </script>
+ 
+</body>
+</html>

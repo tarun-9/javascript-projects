@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .changeColor{
+              color: red;
+        }
+
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:linear-gradient(to right,rgb(231, 112, 203),rgb(223, 163, 52),rgb(242, 43, 43));
+        }
+
+        section{
+            width: 50%;
+        }
+
+       #textarea{
+        width: 100%;
+        padding: 20px;
+        resize: none;
+        border-radius: 20px;
+        background-color: rgb(97, 97, 223);
+        color:white;
+        font-size: large;
+        font-weight: bold;
+       }
+
+       div.output div{
+        flex: 1;
+        flex-basis: 150px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+       }
+
+       textarea:focus-visible{
+        outline: none;
+       }
+
+       h2{
+        text-align: center;
+        margin: 15px;
+        text-transform: uppercase;
+        word-spacing: 5px;
+        text-decoration: underline wavy green;
+       }
+
+      div.output div:nth-child(odd){
+       border: 2px solid black; 
+       margin-top: 10px;
+       }
+
+      div.output div:nth-child(even){
+        border: 2px solid black;
+        margin-top: 10px;
+    }
+       
+    </style>
+</head>
+<body>
+   
+  <section>
+    <h2>Char Counter</h2>
+        <div>
+        <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+       </div>
+      <div class="output">
+
+       <div>
+        <p class="char-count">0</p>
+        <p>Characters Count</p>
+       </div>
+
+       <div>
+        <p class="insta-count">2200</p>
+        <p>Instagram Count</p>
+       </div>
+
+       <div>
+        <p class="twitter-count">280</p>
+        <p>Twitter Count</p>
+       </div>
+
+       <div>
+        <p class="word-count">0</p>
+        <p>Word Count</p>
+       </div>
+
+      </div>
+  </section>
+
+<script>
+    let textarea=document.querySelector("#textarea")
+    let char=document.querySelector(".char-count")
+    let insta=document.querySelector(".insta-count")
+    let twitter=document.querySelector(".twitter-count")
+    let word=document.querySelector(".word-count")
+    let insta_max_num=2200;
+    let twitter_max_number=280;
+
+    let charCounter=(e)=>{
+         char.innerHTML=e.target.value.length;
+    }
+
+    let instaCounter=(e)=>{
+        insta.innerHTML=insta_max_num-e.target.value.length;
+
+        if(e.target.value.length>2200){
+
+              insta.classList.add("changeColor")
+        }
+        else{
+
+            insta.classList.remove("changeColor")
+        }
+    }
+
+    let twitterCounter=(e)=>{
+         twitter.innerHTML=twitter_max_number-e.target.value.length;
+
+         if(e.target.value.length>280){
+
+           twitter.classList.add("changeColor")
+         }
+         else{
+
+            twitter.classList.remove("changeColor")
+         }
+
+    }
+    let wordCounter=(e)=>{
+        let arr=e.target.value.replace(/\s+/g," ").split(" ");
+
+        for(let i=0;i<arr.length;i++){
+
+            if(arr[i]===""){
+                 word.innerHTML=arr.length-1;
+            }
+            else{
+                word.innerHTML=arr.length;
+            }
+        }
+    }
+
+
+    textarea.addEventListener("input" ,(e)=>{
+        charCounter(e);
+        instaCounter(e);
+        twitterCounter(e);
+        wordCounter(e);
+    })
+   
+
+</script>
+</body>
+</html>

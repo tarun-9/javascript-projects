@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    body{
+        background-color:black;
+        color: chartreuse;
+        display: grid;
+        place-items: center;
+        margin-top: 13rem;
+    }
+
+    #input{
+        width: 350px;
+        padding: 5px;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+
+    .output{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+    }
+
+</style>
+<body>
+    <section>
+        <div>
+            <input type="text" name="input" id="input" placeholder="Enter Value">
+        </div>
+
+        <div class="output">
+            <p class="inputvalue"> Input Value :</p>
+            <p class="inputname"> Input Name :</p>
+            <p class="inputtype"> Input Type :</p>
+            <p class="eventtype"> Event Type :</p>
+
+        </div>
+    </section>
+
+    <script>
+        let input=document.querySelector("#input");
+        let inputvalue=document.querySelector(".inputvalue");
+        let inputname=document.querySelector(".inputname")
+        let inputtype=document.querySelector(".inputtype");
+        let eventtype=document.querySelector(".eventtype");
+
+        let tarun=(event)=>{
+            // console.log(event);
+          
+            inputvalue.innerHTML=`Input Value : ${event.target.value}`
+            inputname.innerHTML=`Input Name :${ event.target.name}`
+            inputtype.innerHTML=`Input Type :${event.inputType}`
+            eventtype.innerHTML=`Event Type :${event.type}`
+        }
+
+       input.addEventListener("input",tarun)
+    </script>
+</body>
+</html>

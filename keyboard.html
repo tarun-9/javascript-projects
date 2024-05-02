@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    #input{
+        font-size: 15px;
+        padding: 8px;
+        width: 380px;
+       font-weight: 500;
+       margin-bottom: 15px;
+    }
+
+    body{
+        /* backgroundImage`linear-gradient(to right,${rgb1},${rgb2})`; */
+        background-color: black;
+        color: white;
+        display: grid;
+        place-items: center;
+        margin-top: 14rem;
+    }
+
+    .output{
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        font-size: 20px;
+        color: yellow;
+    }
+    
+</style>
+<body>
+
+    <section>
+        <input type="text" name="input" id="input" placeholder="Type a character in the keyboard...">
+        <div class="output">
+            <p class="keypressed"> Key Pressed :</p>
+            <p class="keycode"> Key Code :</p>
+            <p class="charcode"> Char Code :</p>
+            <p class="eventtype"> Event Type :</p>
+        </div>
+    </section>
+
+    <script>
+        
+        let input=document.querySelector("#input");
+        let keypressed=document.querySelector(".keypressed");
+        let keycode=document.querySelector(".keycode");
+        let charcode=document.querySelector(".charcode");
+        let eventtype=document.querySelector(".eventtype");
+
+        const handleClick=(e)=>{
+           
+            keypressed.innerHTML=`Key Pressed : ${e.key}`;
+            keycode.innerHTML=`Key Code : ${e.code}`;
+            charcode.innerHTML=`Char Code : ${e.key.charCodeAt()}`;
+            eventtype.innerHTML=`Event Type : ${e.type}`; 
+        }
+
+   input.addEventListener("keydown",handleClick)
+
+    </script>
+    
+</body>
+</html>
